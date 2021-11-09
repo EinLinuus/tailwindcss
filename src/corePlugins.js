@@ -105,6 +105,10 @@ export let variantPlugins = {
     }
 
     for (let [variantName, state] of pseudoVariants) {
+      addVariant(`group-scoped-${variantName}`, [`:merge(.group-scoped)${state} > &`, `:merge(.group-scoped)${state} *:not(.group-scoped) &`])
+    }
+
+    for (let [variantName, state] of pseudoVariants) {
       addVariant(`peer-${variantName}`, `:merge(.peer)${state} ~ &`)
     }
   },
